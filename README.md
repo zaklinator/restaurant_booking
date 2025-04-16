@@ -1,4 +1,5 @@
-﻿# Restaurant Booking API
+
+# Restaurant Booking API
 
 API для бронирования столиков в ресторане. Проект реализован с использованием **FastAPI**, **SQLAlchemy**, **PostgreSQL**, **Alembic** и упакован в **Docker-контейнер** с помощью **docker-compose**.
 
@@ -154,3 +155,5 @@ API для бронирования столиков в ресторане. Пр
   "duration_minutes": 60
 }
    ```
+
+
