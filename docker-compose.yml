@@ -1,0 +1,37 @@
+﻿services:
+  web:
+    build: .
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+      - test_db
+    environment:
+      DATABASE_URL: postgresql+psycopg2://user:password@db:5432/restaurant_db
+      DATABASE_URL_TEST: postgresql+psycopg2://test:test@test_db:5432/test_db
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: restaurant_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  test_db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - test_pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+  test_pgdata:
